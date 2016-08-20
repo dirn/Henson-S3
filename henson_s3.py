@@ -40,6 +40,11 @@ class S3(Extension):
         """
         super().init_app(app)
 
+        self._session = Session(
+            aws_access_key_id=app.settings['AWS_ACCESS_KEY'],
+            aws_secret_access_key=app.settings['AWS_ACCESS_SECRET'],
+            region_name=app.settings['AWS_REGION_NAME'],
+        )
         app.startup(self._connect)
 
     async def download(self, key, *, bucket=None):
@@ -97,9 +102,4 @@ class S3(Extension):
             app (henson.base.Application): The application instance
                 against which to register the client.
         """
-        session = Session(
-            aws_access_key_id=app.settings['AWS_ACCESS_KEY'],
-            aws_secret_access_key=app.settings['AWS_ACCESS_SECRET'],
-            region_name=app.settings['AWS_REGION_NAME'],
-        )
-        self._client = session.client('s3')
+        self._client = self._session.client('s3')
