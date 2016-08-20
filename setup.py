@@ -23,7 +23,7 @@ setup(
     version='0.1.0',
     author='Andy Dirnberger',
     author_email='andy@dirnberger.me',
-    url='https://henson-s3.rtfd.org',
+    url='https://henson-s3.readthedocs.io',
     description='A library for easily using S3 in a Henson application.',
     long_description=read('README.rst'),
     license='MIT',
