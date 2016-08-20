@@ -3,7 +3,7 @@ Henson-S3
 =============
 
 Henson-S3 is a library that helps to easily interact with S3 from inside a
-`Henson <https://henson.readthedocs.org>`_ application.
+`Henson <https://henson.readthedocs.io>`_ application.
 
 Installation
 ============
