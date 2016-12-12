@@ -25,8 +25,8 @@ class S3(Extension):
     """A class to interact with S3."""
 
     DEFAULT_SETTINGS = {
-        'AWS_ACCESS_KEY': None,
-        'AWS_ACCESS_SECRET': None,
+        'AWS_ACCESS_KEY_ID': None,
+        'AWS_SECRET_ACCESS_KEY': None,
         'AWS_BUCKET_NAME': None,
         'AWS_REGION_NAME': None,
     }
@@ -41,8 +41,8 @@ class S3(Extension):
         super().init_app(app)
 
         self._session = Session(
-            aws_access_key_id=app.settings['AWS_ACCESS_KEY'],
-            aws_secret_access_key=app.settings['AWS_ACCESS_SECRET'],
+            aws_access_key_id=app.settings['AWS_ACCESS_KEY_ID'],
+            aws_secret_access_key=app.settings['AWS_SECRET_ACCESS_KEY'],
             region_name=app.settings['AWS_REGION_NAME'],
         )
         app.startup(self._connect)

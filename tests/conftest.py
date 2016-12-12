@@ -38,8 +38,8 @@ def test_app(test_consumer, event_loop):
         raise Exception('testing')
 
     app = Application('testing', callback=callback, consumer=test_consumer)
-    app.settings['AWS_ACCESS_KEY'] = 'testing'
-    app.settings['AWS_ACCESS_SECRET'] = 'testing'
+    app.settings['AWS_ACCESS_KEY_ID'] = 'testing'
+    app.settings['AWS_SECRET_ACCESS_KEY'] = 'testing'
     app.settings['AWS_BUCKET_NAME'] = 'testing'
     app.settings['AWS_REGION_NAME'] = 'us-east-1'
 

@@ -21,19 +21,19 @@ Configuration
 
 The following configuration settings can be added to the application.
 
-+-----------------------+-----------------------------------------------------+
-| ``AWS_ACCESS_ID``     | The Access ID used to identify the account.         |
-|                       | Defaults to None.                                   |
-+-----------------------+-----------------------------------------------------+
-| ``AWS_ACCESS_SECRET`` | The Access Secret used to identify the account.     |
-|                       | Defaults to None.                                   |
-+-----------------------+-----------------------------------------------------+
-| ``AWS_BUCKET_NAME``   | The name of the default bucket to use. Defaults to  |
-|                       | None.                                               |
-+-----------------------+-----------------------------------------------------+
-| ``AWS_REGION_NAME``   | The name of the Region where the bucket is located. |
-|                       | Defaults to None.                                   |
-+-----------------------+-----------------------------------------------------+
++---------------------------+-------------------------------------------------+
+| ``AWS_ACCESS_KEY_ID``     | The Access ID used to identify the account.     |
+|                           | Defaults to None.                               |
++---------------------------+-------------------------------------------------+
+| ``AWS_SECRET_ACCESS_KEY`` | The Access Secret used to identify the account. |
+|                           | Defaults to None.                               |
++---------------------------+-------------------------------------------------+
+| ``AWS_BUCKET_NAME``       | The name of the default bucket to use. Defaults |
+|                           | to None.                                        |
++---------------------------+-------------------------------------------------+
+| ``AWS_REGION_NAME``       | The name of the Region where the bucket is      |
+|                           | located. Defaults to None.                      |
++---------------------------+-------------------------------------------------+
 
 Usage
 =====
