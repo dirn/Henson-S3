@@ -1,14 +1,17 @@
 """Test utilities."""
 
-from http import HTTPStatus
-import io
+from functools import partial
+import os
 
-from botocore.response import StreamingBody
 from henson import Application
 import placebo
 import pytest
 
 from henson_s3 import S3
+
+
+placebo_fixture = partial(
+    os.path.join, os.path.dirname(__file__), 'data', 'placebo')
 
 
 class MockConsumer:
@@ -56,16 +59,10 @@ def test_consumer():
 @pytest.fixture
 def download_session(s3, test_app, event_loop, tmpdir):
     """Return a session with placebo attached to it."""
-    pill = placebo.attach(s3._session, data_path=str(tmpdir.dirpath()))
+    pill = placebo.attach(s3._session, data_path=placebo_fixture('download'))
 
     event_loop.run_until_complete(s3._connect(test_app))
 
-    pill.save_response(
-        service='s3',
-        operation='GetObject',
-        response_data={'Body': StreamingBody(io.StringIO('OK'), 2)},
-        http_response=HTTPStatus.OK,
-    )
     pill.playback()
 
     return pill
@@ -74,16 +71,10 @@ def download_session(s3, test_app, event_loop, tmpdir):
 @pytest.fixture
 def upload_session(s3, test_app, event_loop, tmpdir):
     """Return a session with placebo attached to it."""
-    pill = placebo.attach(s3._session, data_path=str(tmpdir.dirpath()))
+    pill = placebo.attach(s3._session, data_path=placebo_fixture('upload'))
 
     event_loop.run_until_complete(s3._connect(test_app))
 
-    pill.save_response(
-        service='s3',
-        operation='PutObject',
-        response_data={'Body': StreamingBody(io.StringIO('OK'), 2)},
-        http_response=HTTPStatus.OK,
-    )
     pill.playback()
 
     return pill

@@ -1,0 +1,10 @@
+{
+    "status_code": 200,
+    "data": {
+        "Body": {
+            "__class__": "StreamingBody",
+            "body": "OK",
+            "__module__": "botocore.response"
+        }
+    }
+}
