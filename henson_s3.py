@@ -47,6 +47,32 @@ class S3(Extension):
         )
         app.startup(self._connect)
 
+    async def check(self, key, *, bucket=None):
+        """Check to see if a file exists in an S3 bucket.
+
+        Args:
+            key (str): The name of the file for which to check.
+            bucket (Optional[str]): THe name of the bucket in which to
+                check for the file. If no value is provided, the
+                ``AWS_BUCKET_NAME`` setting will be used.
+
+        Returns:
+            bool: True if the file exists.
+
+        Raises:
+            ValueError: If no bucket name is specified.
+        """
+        bucket = bucket or self.app.settings['AWS_BUCKET_NAME']
+        if not bucket:
+            raise ValueError('A bucket name is required.')
+
+        try:
+            self._client.head_object(Bucket=bucket, Key=key)
+        except ClientError:
+            return False
+        else:
+            return True
+
     async def download(self, key, *, bucket=None):
         """Return the contents of a file in an S3 bucket.
 
