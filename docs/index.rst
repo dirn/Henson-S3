@@ -48,6 +48,12 @@ Usage
 
     S3(app)
 
+API
+===
+
+.. autoclass:: henson_s3.S3
+   :members:
+
 Contents:
 
 .. toctree::
