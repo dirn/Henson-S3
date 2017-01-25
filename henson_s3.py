@@ -52,9 +52,9 @@ class S3(Extension):
 
         Args:
             key (str): The name of the file for which to check.
-            bucket (Optional[str]): THe name of the bucket in which to
-                check for the file. If no value is provided, the
-                ``AWS_BUCKET_NAME`` setting will be used.
+            bucket (~typing.Optional[str]): THe name of the bucket in
+                which to check for the file. If no value is provided,
+                the ``AWS_BUCKET_NAME`` setting will be used.
 
         Returns:
             bool: True if the file exists.
@@ -78,8 +78,8 @@ class S3(Extension):
 
         Args:
             key (str): The name of the file to download.
-            bucket (Optional[str]): The name of the bucket from which to
-                download the file. If no value is provided, the
+            bucket (~typing.Optional[str]): The name of the bucket from
+                which to download the file. If no value is provided, the
                 ``AWS_BUCKET_NAME`` setting will be used.
 
         Returns:
@@ -108,8 +108,8 @@ class S3(Extension):
         Args:
             key (str): The name of the file to upload.
             file (bytes): The contents of the file.
-            bucket (Optional[str]): The name of the bucket to which to
-                upload the file. If no value is provided, the
+            bucket (~typing.Optional[str]): The name of the bucket to
+                which to upload the file. If no value is provided, the
                 ``AWS_BUCKET_NAME`` setting will be used.
 
         Raises:
