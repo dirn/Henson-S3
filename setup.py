@@ -29,6 +29,7 @@ setup(
     license='MIT',
     py_modules=['henson_s3'],
     zip_safe=False,
+    python_requires='>=3.5',  # async/await
     install_requires=[
         'boto3',
         'Henson',
