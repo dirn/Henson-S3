@@ -13,6 +13,7 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
+from datetime import date
 import sys
 import os
 import pkg_resources
@@ -54,7 +55,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Henson-S3'
-copyright = '2016, Andy Dirnberger'
+copyright = '2016-{:%Y}, Andy Dirnberger'.format(date.today())
 author = 'Andy Dirnberger'
 
 # The version info for the project you're documenting, acts as replacement for
