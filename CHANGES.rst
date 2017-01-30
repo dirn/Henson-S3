@@ -1,4 +1,6 @@
 Version 0.1.0
 -------------
 
-Release TBD
+Released 2017-01-30
+
+- Initial release
