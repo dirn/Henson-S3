@@ -1,0 +1,12 @@
+{
+    "data": {
+        "ResponseMetaData": {
+            "HTTPStatusCode": 403
+        },
+        "Error": {
+            "Code": 403,
+            "Message": "FORBIDDEN"
+        }
+    },
+    "status_code": 403
+}

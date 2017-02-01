@@ -57,7 +57,7 @@ def test_consumer():
 
 
 @pytest.fixture
-def check_session(s3, test_app, event_loop, tmpdir):
+def check_session(s3, test_app, event_loop):
     """Return a session with placebo attached to it."""
     pill = placebo.attach(s3._session, data_path=placebo_fixture('check'))
 
@@ -69,7 +69,7 @@ def check_session(s3, test_app, event_loop, tmpdir):
 
 
 @pytest.fixture
-def download_session(s3, test_app, event_loop, tmpdir):
+def download_session(s3, test_app, event_loop):
     """Return a session with placebo attached to it."""
     pill = placebo.attach(s3._session, data_path=placebo_fixture('download'))
 
@@ -80,10 +80,11 @@ def download_session(s3, test_app, event_loop, tmpdir):
     return pill
 
 
-@pytest.fixture
-def forbidden_session(s3, test_app, event_loop, tmpdir):
-    """Return a session with placebo attached to it."""
-    pill = placebo.attach(s3._session, data_path=placebo_fixture('forbidden'))
+@pytest.fixture(params=('forbidden', 'not_found'))
+def error_session(request, s3, test_app, event_loop):
+    """Return a session that errs with placebo attached to it."""
+    pill = placebo.attach(
+        s3._session, data_path=placebo_fixture(request.param))
 
     event_loop.run_until_complete(s3._connect(test_app))
 
@@ -93,19 +94,7 @@ def forbidden_session(s3, test_app, event_loop, tmpdir):
 
 
 @pytest.fixture
-def not_found_session(s3, test_app, event_loop, tmpdir):
-    """Return a session with placebo attached to it."""
-    pill = placebo.attach(s3._session, data_path=placebo_fixture('not_found'))
-
-    event_loop.run_until_complete(s3._connect(test_app))
-
-    pill.playback()
-
-    return pill
-
-
-@pytest.fixture
-def upload_session(s3, test_app, event_loop, tmpdir):
+def upload_session(s3, test_app, event_loop):
     """Return a session with placebo attached to it."""
     pill = placebo.attach(s3._session, data_path=placebo_fixture('upload'))
 
