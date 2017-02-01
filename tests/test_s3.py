@@ -23,6 +23,13 @@ async def test_download(s3, download_session):
 
 
 @pytest.mark.asyncio
+async def test_download_filenotfounderror(s3, error_session):
+    """Test that download raises FileNotFoundError."""
+    with pytest.raises(FileNotFoundError):
+        await s3.download('key')
+
+
+@pytest.mark.asyncio
 async def test_upload(s3, upload_session):
     """Test upload."""
     await s3.upload('key', 'value')
