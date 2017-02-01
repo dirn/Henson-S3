@@ -20,7 +20,7 @@ def read(filename):
 
 setup(
     name='Henson-S3',
-    version='0.1.0',
+    version='0.2.0',
     author='Andy Dirnberger',
     author_email='andy@dirnberger.me',
     url='https://henson-s3.readthedocs.io',
