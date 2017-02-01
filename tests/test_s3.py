@@ -10,14 +10,8 @@ async def test_check(s3, check_session):
 
 
 @pytest.mark.asyncio
-async def test_check_forbidden(s3, forbidden_session):
-    """Test check handles forbidden files."""
-    assert not await s3.check('key')
-
-
-@pytest.mark.asyncio
-async def test_check_not_found(s3, not_found_session):
-    """Test check handles files that don't exist."""
+async def test_check_errors(s3, error_session):
+    """Test check handles errors."""
     assert not await s3.check('key')
 
 
