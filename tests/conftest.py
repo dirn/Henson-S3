@@ -9,9 +9,7 @@ import pytest
 
 from doozer_s3 import S3
 
-
-placebo_fixture = partial(
-    os.path.join, os.path.dirname(__file__), 'data', 'placebo')
+placebo_fixture = partial(os.path.join, os.path.dirname(__file__), "data", "placebo")
 
 
 class MockConsumer:
@@ -34,14 +32,15 @@ def s3(test_app):
 @pytest.fixture
 def test_app(test_consumer, event_loop):
     """Return a test application."""
-    async def callback(app, message):
-        raise Exception('testing')
 
-    app = Application('testing', callback=callback, consumer=test_consumer)
-    app.settings['AWS_ACCESS_KEY_ID'] = 'testing'
-    app.settings['AWS_SECRET_ACCESS_KEY'] = 'testing'
-    app.settings['AWS_BUCKET_NAME'] = 'testing'
-    app.settings['AWS_REGION_NAME'] = 'us-east-1'
+    async def callback(app, message):
+        raise Exception("testing")
+
+    app = Application("testing", callback=callback, consumer=test_consumer)
+    app.settings["AWS_ACCESS_KEY_ID"] = "testing"
+    app.settings["AWS_SECRET_ACCESS_KEY"] = "testing"
+    app.settings["AWS_BUCKET_NAME"] = "testing"
+    app.settings["AWS_REGION_NAME"] = "us-east-1"
 
     @app.message_acknowledgement
     async def stop_loop(app, message):
@@ -59,7 +58,7 @@ def test_consumer():
 @pytest.fixture
 def check_session(s3, test_app, event_loop):
     """Return a session with placebo attached to it."""
-    pill = placebo.attach(s3._session, data_path=placebo_fixture('check'))
+    pill = placebo.attach(s3._session, data_path=placebo_fixture("check"))
 
     event_loop.run_until_complete(s3._connect(test_app))
 
@@ -71,7 +70,7 @@ def check_session(s3, test_app, event_loop):
 @pytest.fixture
 def download_session(s3, test_app, event_loop):
     """Return a session with placebo attached to it."""
-    pill = placebo.attach(s3._session, data_path=placebo_fixture('download'))
+    pill = placebo.attach(s3._session, data_path=placebo_fixture("download"))
 
     event_loop.run_until_complete(s3._connect(test_app))
 
@@ -80,11 +79,10 @@ def download_session(s3, test_app, event_loop):
     return pill
 
 
-@pytest.fixture(params=('forbidden', 'not_found'))
+@pytest.fixture(params=("forbidden", "not_found"))
 def error_session(request, s3, test_app, event_loop):
     """Return a session that errs with placebo attached to it."""
-    pill = placebo.attach(
-        s3._session, data_path=placebo_fixture(request.param))
+    pill = placebo.attach(s3._session, data_path=placebo_fixture(request.param))
 
     event_loop.run_until_complete(s3._connect(test_app))
 
@@ -96,7 +94,7 @@ def error_session(request, s3, test_app, event_loop):
 @pytest.fixture
 def upload_session(s3, test_app, event_loop):
     """Return a session with placebo attached to it."""
-    pill = placebo.attach(s3._session, data_path=placebo_fixture('upload'))
+    pill = placebo.attach(s3._session, data_path=placebo_fixture("upload"))
 
     event_loop.run_until_complete(s3._connect(test_app))
 
