@@ -1,13 +1,13 @@
 """A Doozer plugin to interact with S3."""
 
 import os as _os
-import pkg_resources as _pkg_resources
 
 from boto3.session import Session
 from botocore.exceptions import ClientError
 from doozer import Extension
+import pkg_resources as _pkg_resources
 
-__all__ = ('S3',)
+__all__ = ("S3",)
 
 try:
     _dist = _pkg_resources.get_distribution(__name__)
@@ -16,7 +16,7 @@ try:
         # it's installed from elsewhere.
         raise _pkg_resources.DistributionNotFound
 except _pkg_resources.DistributionNotFound:
-    __version__ = 'development'
+    __version__ = "development"
 else:
     __version__ = _dist.version
 
@@ -25,10 +25,10 @@ class S3(Extension):
     """A class to interact with S3."""
 
     DEFAULT_SETTINGS = {
-        'AWS_ACCESS_KEY_ID': None,
-        'AWS_SECRET_ACCESS_KEY': None,
-        'AWS_BUCKET_NAME': None,
-        'AWS_REGION_NAME': None,
+        "AWS_ACCESS_KEY_ID": None,
+        "AWS_SECRET_ACCESS_KEY": None,
+        "AWS_BUCKET_NAME": None,
+        "AWS_REGION_NAME": None,
     }
 
     def init_app(self, app):
@@ -41,9 +41,9 @@ class S3(Extension):
         super().init_app(app)
 
         self._session = Session(
-            aws_access_key_id=app.settings['AWS_ACCESS_KEY_ID'],
-            aws_secret_access_key=app.settings['AWS_SECRET_ACCESS_KEY'],
-            region_name=app.settings['AWS_REGION_NAME'],
+            aws_access_key_id=app.settings["AWS_ACCESS_KEY_ID"],
+            aws_secret_access_key=app.settings["AWS_SECRET_ACCESS_KEY"],
+            region_name=app.settings["AWS_REGION_NAME"],
         )
         app.startup(self._connect)
 
@@ -62,9 +62,9 @@ class S3(Extension):
         Raises:
             ValueError: If no bucket name is specified.
         """
-        bucket = bucket or self.app.settings['AWS_BUCKET_NAME']
+        bucket = bucket or self.app.settings["AWS_BUCKET_NAME"]
         if not bucket:
-            raise ValueError('A bucket name is required.')
+            raise ValueError("A bucket name is required.")
 
         try:
             self._client.head_object(Bucket=bucket, Key=key)
@@ -89,17 +89,16 @@ class S3(Extension):
             FileNotFoundError: If the key isn't found.
             ValueError: If no bucket name is specified.
         """
-        bucket = bucket or self.app.settings['AWS_BUCKET_NAME']
+        bucket = bucket or self.app.settings["AWS_BUCKET_NAME"]
         if not bucket:
-            raise ValueError('A bucket name is required.')
+            raise ValueError("A bucket name is required.")
 
         try:
             file = self._client.get_object(Bucket=bucket, Key=key)
         except ClientError:
-            raise FileNotFoundError("'{}' was not found in '{}'".format(
-                key, bucket))
+            raise FileNotFoundError("'{}' was not found in '{}'".format(key, bucket))
 
-        return file['Body'].read()
+        return file["Body"].read()
 
     # TODO: Support other S3 settings (e.g., ACL, CacheControl).
     async def upload(self, key, file, *, bucket=None):
@@ -115,9 +114,9 @@ class S3(Extension):
         Raises:
             ValueError: If no bucket name is specified.
         """
-        bucket = bucket or self.app.settings['AWS_BUCKET_NAME']
+        bucket = bucket or self.app.settings["AWS_BUCKET_NAME"]
         if not bucket:
-            raise ValueError('A bucket name is required.')
+            raise ValueError("A bucket name is required.")
 
         self._client.put_object(Body=file, Bucket=bucket, Key=key)
 
@@ -128,4 +127,4 @@ class S3(Extension):
             app (doozer.base.Application): The application instance
                 against which to register the client.
         """
-        self._client = self._session.client('s3')
+        self._client = self._session.client("s3")
