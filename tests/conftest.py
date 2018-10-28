@@ -3,11 +3,11 @@
 from functools import partial
 import os
 
-from henson import Application
+from doozer import Application
 import placebo
 import pytest
 
-from henson_s3 import S3
+from doozer_s3 import S3
 
 
 placebo_fixture = partial(

@@ -1,4 +1,4 @@
-"""Test Henson-S3."""
+"""Test Doozer-S3."""
 
 import pytest
 
