@@ -1,11 +1,11 @@
-"""A Henson plugin to interact with S3."""
+"""A Doozer plugin to interact with S3."""
 
 import os as _os
 import pkg_resources as _pkg_resources
 
 from boto3.session import Session
 from botocore.exceptions import ClientError
-from henson import Extension
+from doozer import Extension
 
 __all__ = ('S3',)
 
@@ -35,7 +35,7 @@ class S3(Extension):
         """Initialize an ``Application`` instance.
 
         Args:
-            app (henson.base.Application): The application instance to
+            app (doozer.base.Application): The application instance to
                 be initialized.
         """
         super().init_app(app)
@@ -125,7 +125,7 @@ class S3(Extension):
         """Create an S3 client.
 
         Args:
-            app (henson.base.Application): The application instance
+            app (doozer.base.Application): The application instance
                 against which to register the client.
         """
         self._client = self._session.client('s3')

@@ -1,20 +1,20 @@
-=============
-Henson-S3
-=============
+=========
+Doozer-S3
+=========
 
-Henson-S3 is a library that helps to easily interact with S3 from inside a
-`Henson <https://henson.readthedocs.io>`_ application.
+Doozer-S3 is a library that helps to easily interact with S3 from inside a
+`Doozer <https://doozer.readthedocs.io>`_ application.
 
 Installation
 ============
 
-Henson-S3 can be installed with::
+Doozer-S3 can be installed with::
 
-    $ python -m pip install Henson-S3
+    $ python -m pip install Doozer-S3
 
 .. warning::
 
-    Henson-S3 is not yet available on the Python Package Index.
+    Doozer-S3 is not yet available on the Python Package Index.
 
 Configuration
 =============
@@ -40,18 +40,18 @@ Usage
 
 .. code::
 
-    from henson import Application
-    from henson_s3 import S3
+    from doozer import Application
+    from doozer_s3 import S3
 
     app = Application('application-with-s3')
-    app.settings['AWS_BUCKET_NAME'] = 'my-henson-bucket'
+    app.settings['AWS_BUCKET_NAME'] = 'my-doozer-bucket'
 
     S3(app)
 
 API
 ===
 
-.. autoclass:: henson_s3.S3
+.. autoclass:: doozer_s3.S3
    :members:
 
 Contents:

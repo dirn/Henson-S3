@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# Henson-S3 documentation build configuration file, created by
+# Doozer-S3 documentation build configuration file, created by
 # sphinx-quickstart on Thu Mar 31 23:53:49 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -54,7 +54,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'Henson-S3'
+project = 'Doozer-S3'
 copyright = '2016-{:%Y}, Andy Dirnberger'.format(date.today())
 author = 'Andy Dirnberger'
 
@@ -63,7 +63,7 @@ author = 'Andy Dirnberger'
 # built documents.
 #
 # The full version, including alpha/beta/rc tags.
-release = pkg_resources.get_distribution('henson-s3').version
+release = pkg_resources.get_distribution('doozer-s3').version
 # The short X.Y version.
 version = release.rsplit('.', 1)[0]
 
@@ -129,7 +129,7 @@ html_theme = 'sphinx_rtd_theme'
 
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
-#html_title = 'Henson-S3 v0.1.0'
+#html_title = 'Doozer-S3 v0.1.0'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None
@@ -211,7 +211,7 @@ html_static_path = ['_static']
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Henson-S3doc'
+htmlhelp_basename = 'Doozer-S3doc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -233,7 +233,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Henson-S3.tex', 'Henson-S3 Documentation',
+    (master_doc, 'Doozer-S3.tex', 'Doozer-S3 Documentation',
      'Andy Dirnberger', 'manual'),
 ]
 
@@ -263,7 +263,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'henson-s3', 'Henson-S3 Documentation',
+    (master_doc, 'doozer-s3', 'Doozer-S3 Documentation',
      [author], 1)
 ]
 
@@ -277,8 +277,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Henson-S3', 'Henson-S3 Documentation',
-     author, 'Henson-S3', 'One line description of project.',
+    (master_doc, 'Doozer-S3', 'Doozer-S3 Documentation',
+     author, 'Doozer-S3', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -297,6 +297,6 @@ texinfo_documents = [
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {
-    'henson': ('https://henson.readthedocs.io/en/latest/', None),
+    'doozer': ('https://doozer.readthedocs.io/en/latest/', None),
     'python': ('https://docs.python.org/3', None),
 }

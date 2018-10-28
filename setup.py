@@ -19,20 +19,20 @@ def read(filename):
         return f.read()
 
 setup(
-    name='Henson-S3',
+    name='Doozer-S3',
     version='0.2.0',
     author='Andy Dirnberger',
     author_email='andy@dirnberger.me',
-    url='https://henson-s3.readthedocs.io',
-    description='A library for easily using S3 in a Henson application.',
+    url='https://doozer-s3.readthedocs.io',
+    description='A library for easily using S3 in a Doozer application.',
     long_description=read('README.rst'),
     license='MIT',
-    py_modules=['henson_s3'],
+    py_modules=['doozer_s3'],
     zip_safe=False,
     python_requires='>=3.5',  # async/await
     install_requires=[
         'boto3',
-        'Henson',
+        'Doozer',
     ],
     tests_require=[
         'pytest',
